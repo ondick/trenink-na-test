@@ -58,17 +58,31 @@ public class Validator {
         }
 
 
-
         Matcher mVitezstvi = pVitezstvi.matcher(pocetVitezstvi);
         if (!mVitezstvi.matches()) {
             chyby.add("neplatny pocet vitezstvi");
             ok = false;
-        }else if(Integer.parseInt(pocetVitezstvi) < 0 || Integer.parseInt(pocetVitezstvi) > 1000){
+        } else if (Integer.parseInt(pocetVitezstvi) < 0 || Integer.parseInt(pocetVitezstvi) > 1000) {
             chyby.add("neplatny pocet vitezstvi");
             ok = false;
         }
 
 
+
+        if (ok) {
+            Piloti novyPilot = new Piloti(
+                    kodPilota,
+                    planeta,
+                    Integer.parseInt(rokNarozeni),
+                    typLodi,
+                    Integer.parseInt(pocetVitezstvi)
+            );
+            platniPiloti.add(novyPilot);
+        }
+
+
         return ok;
+
+
     }
 }
